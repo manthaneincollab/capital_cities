@@ -15,6 +15,10 @@ from environs import Env
 
 env = Env()
 env.read_env()
+
+DEBUG = env.bool("DEBUG")
+SECRET_KEY = env.str("SECRET_KEY")
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,17 +33,20 @@ SECRET_KEY = "django-insecure-tj!npo1h$tnn2^3)vfvfa7-pb_711=@6ao+y==hi@ys^n$03f7
 DEBUG = True
 
 # ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = [".herokuapp.com", "localhost", "127.0.0.1"]
+
 # only in codio
-ALLOWED_HOSTS = ["*"]
-X_FRAME_OPTIONS = "ALLOW-FROM " + os.environ.get("CODIO_HOSTNAME") + "-8000.codio.io"
-CSRF_COOKIE_SAMESITE = None
-CSRF_TRUSTED_ORIGINS = [
-    "https://" + os.environ.get("CODIO_HOSTNAME") + "-8000.codio.io"
-]
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SAMESITE = "None"
-SESSION_COOKIE_SAMESITE = "None"
+# ALLOWED_HOSTS = ["*"]
+# X_FRAME_OPTIONS = "ALLOW-FROM " + os.environ.get("CODIO_HOSTNAME") + "-8000.codio.io"
+# CSRF_COOKIE_SAMESITE = None
+# CSRF_TRUSTED_ORIGINS = [
+#    "https://" + os.environ.get("CODIO_HOSTNAME") + "-8000.codio.io"
+# ]
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SAMESITE = "None"
+# SESSION_COOKIE_SAMESITE = "None"
 
 
 # Application definition
@@ -58,10 +65,10 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
-    #'django.middleware.csrf.CsrfViewMiddleware', #only in codio
+    "django.middleware.csrf.CsrfViewMiddleware",  # only in codio
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    #'django.middleware.clickjacking.XFrameOptionsMiddleware', #only in codio
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",  # only in codio
 ]
 
 ROOT_URLCONF = "capital_cities.urls"
