@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+{% for capital in capital_list %}
+<h3>{{ capital.city }} is the capital of {{ capital.country }}</h3>
+{% endfor %}
+{% endblock content %}

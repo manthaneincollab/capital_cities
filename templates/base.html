@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Capital Cities</title>
+  </head>
+  <body>
+    <div>
+      <header>
+        <div>
+          <h1><a href="{% url 'home' %}">Capital Cities</a></h1>
+        </div>
+        <div>
+          <a href="{% url 'capital_new' %}">+ New Capital</a>
+        </div>
+      </header>
+      {% block content %}
+      {% endblock content %}
+    </div>
+  </body>
+</html>
